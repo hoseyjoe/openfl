@@ -4,6 +4,7 @@ package openfl._internal.renderer.dom;
 import openfl._internal.renderer.RenderSession;
 import openfl.text.TextField;
 import openfl.text.TextFieldAutoSize;
+import openfl.text.TextFieldType;
 import openfl.text.TextFormatAlign;
 
 #if js
@@ -31,6 +32,9 @@ class DOMTextField {
 						textField.__div = cast Browser.document.createElement ("div");
 						DOMRenderer.initializeElement (textField, textField.__div, renderSession);
 						textField.__style.setProperty ("cursor", "inherit", null);
+						if (textField.type == TextFieldType.INPUT) {
+							textField.__div.contentEditable="true";
+						}
 						
 					}
 					
